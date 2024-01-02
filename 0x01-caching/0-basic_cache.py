@@ -19,7 +19,7 @@ class BasicCache(BaseCaching):
         """
         assign a value to the dictionary
         """
-        if key:
+        if key and item:
             self.cache_data[key] = item
 
     def get(self, key):
