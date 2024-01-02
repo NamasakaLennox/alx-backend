@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Implements LRU caching algorithm
+Implements MRU caching algorithm
 """
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-    a class that implements a LRU cache algorithm
+    a class that implements a MRU cache algorithm
     """
     lru_mru = []
 
@@ -31,9 +31,9 @@ class LRUCache(BaseCaching):
                 self.lru_mru.append(key)
 
             if len(self.lru_mru) > self.MAX_ITEMS:
-                del self.cache_data[self.lru_mru[0]]
-                print(f'DISCARD: {self.lru_mru[0]}')
-                self.lru_mru.pop(0)
+                del self.cache_data[self.lru_mru[-2]]
+                print(f'DISCARD: {self.lru_mru[-2]}')
+                self.lru_mru.pop(-2)
 
     def get(self, key):
         """gets an item from cache
