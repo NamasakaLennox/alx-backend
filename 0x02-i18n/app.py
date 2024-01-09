@@ -2,6 +2,7 @@
 """
 A basic flask app
 """
+from datetime import datetime
 from flask import Flask, g, render_template, request
 from flask_babel import Babel, format_datetime
 from typing import Dict, Union
@@ -50,6 +51,7 @@ def before_request() -> None:
     is executed
     """
     g.user = get_user()
+    g.time = format_datetime(datetime.now())
 
 
 @babel.localeselector
@@ -88,7 +90,6 @@ def get_timezone() -> str:
 def index() -> str:
     """default home route
     """
-    g.time = format_datetime()
     return render_template('index.html')
 
 
